@@ -1,0 +1,18 @@
+---
+stages:
+  - test
+  - apply
+
+lint:
+  stage: test
+  script:
+    - /home/controller/ce-python/bin/yamllint "$CI_PROJECT_DIR"
+
+apply:
+  stage: apply
+  script:
+    - rsync -avz --delete "$CI_PROJECT_DIR/" SHORTNAME-deploy1.codeenigma.net:/tmp/config
+    - ssh -t SHORTNAME-deploy1.codeenigma.net "sudo rsync -avz --delete --chown=deploy:deploy /tmp/config/ /home/deploy/ce-deploy/config"
+    - ssh -t SHORTNAME-deploy1.codeenigma.net "sudo rm -rf /tmp/config"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "1.x"'

@@ -1,0 +1,6 @@
+# SOPS will not always be needed, this is a placeholder.
+# You will need SOPS only if your deploy jobs have secrets to protect.
+creation_rules:
+  - key_groups:
+      - pgp: []
+          #- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX # deploy server GPG key - TBD
