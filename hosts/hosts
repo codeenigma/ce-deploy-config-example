@@ -1,0 +1,4 @@
+# Docs: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html
+# Plugin page: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ini_inventory.html
+[deploy]
+localhost ansible_connection=local # do not use ssh for localhost connections to deploy server
